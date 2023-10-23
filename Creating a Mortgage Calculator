@@ -1,1 +1,41 @@
 """
+   Programmer: Linh Nguyen
+   Program Name: calcmortgage.py
+   Date: 09-28-23
+   Version: 1.9
+   We use the principal amount, term, and rate to calculate the monthly payment for a mortgage. 
+"""
+
+#Define the main function 
+def main ():
+#Input section 
+#User inputs the values for principal, rate, and term
+#Rate and term are entered as annual and later converted
+#Input validation: do not accept negative values, accept values in range of...
+    prin= float(input('Enter your principal amount: $ '))
+    while (prin < 0):
+        print('The principal amount needs to be a positive number')
+        prin= float(input('Enter an accepted value for the principal amount: $ '))
+    while (prin < 100000) or (prin > 1000000):
+        print('The principal amount needs to be between $100000-1000000')
+        prin= float(input('Enter an accepted value for the principal amount: $ '))
+    r= float(input('Enter your annual rate: '))
+    while (r < 0):
+        print('The annual rate needs to be a positive number')
+        r= float(input('Enter an accepted value for the annual rate: '))
+    t= int(input('Enter your annual term: '))
+    while (t < 0):
+        print('The annual term needs to be a positive number')
+        t= int(input('Enter an accepted value for the annual term: '))
+    calc_monthly_payment (principal=prin, rate=r, term=t) #Function call
+
+def calc_monthly_payment (principal,rate,term): #Function header
+#Output section 
+#Converting annual rate and term values to monthly
+    term= term*12
+    rate= rate/1200
+#Formula for monthly payment of mortgage 
+    monthly_payment= (principal*rate)/(1-(rate+1)**-term)
+    print('The monthly payment for the mortgage would be $ ',format(monthly_payment,'.2f'),sep= ' ')
+#Recall the main function           
+main()
