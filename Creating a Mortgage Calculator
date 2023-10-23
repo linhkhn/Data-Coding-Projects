@@ -7,6 +7,8 @@
 """
 
 #Define the main function 
+#Formula: monthly_payment= (principal*rate)/(1-(rate+1)**-term)
+#Loan amount should be between 100,000 and 1,000,000 (inclusive)
 def main ():
 #Input section 
 #User inputs the values for principal, rate, and term
